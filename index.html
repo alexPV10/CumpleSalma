@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Feliz 23° Salma</title>
+    <link rel="icon" href="img/astro.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="front">
+                <div class="strawberry-decorations">
+                    <div class="strawberry s1">🍓</div>
+                    <div class="strawberry s2">🍓</div>
+                </div>
+                <h1 class="animate__animated animate__bounceIn">¡Feliz Cumpleaños!</h1>
+                <div class="cake-container">
+                    <div class="cake">
+                        <div class="plate"></div>
+                        <div class="layer layer-bottom"></div>
+                        <div class="layer layer-middle"></div>
+                        <div class="layer layer-top"></div>
+                        <div class="candle">
+                            <div class="flame"></div>
+                        </div>
+                        <div class="strawberries">
+                            <div class="strawberry-cake s1">🍓</div>
+                            <div class="strawberry-cake s2">🍓</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="instructions">Toca 2 veces el pastel para apagar</div>
+            </div>
+            <div class="back">
+                <h2 class="animate__animated animate__fadeIn">¡Feliz Día!</h2>
+                <p class="message">
+                    "Que en este día tan especial la vida te regale momentos inolvidables, 
+                    sonrisas sinceras y abrazos cálidos. Que cada deseo que guardas en tu corazón 
+                    se haga realidad y que nunca te falte amor, felicidad y éxito en todo lo que 
+                    te propongas. Que este nuevo año de vida esté lleno de 
+                    experiencias increíbles y sueños cumplidos. 🎉🎂💖"
+                </p>
+               <div class="polaroid">
+                    <a href="https://tuenlace.com" target="_blank" class="photo-link">
+                        <div class="photo" style="background-image: url('https://us.123rf.com/450wm/crosspixel/crosspixel2401/crosspixel240113918/222104529-lindo-gato-de-dibujos-animados-aislado-en-una-ilustraci%C3%B3n-de-vector-de-fondo-blanco.jpg?ver=6'); background-size: cover; background-position: center;"></div>
+                    </a>
+                    <div class="caption">¡Felicidades!</div>
+                </div>
+                <button id="confetti-btn" class="animate__animated animate__tada animate__infinite animate__slower">¡Celebrar de nuevo!</button>
+            </div>
+        </div>
+    </div>
+    <div class="floating-balloons"></div>
+    <canvas id="confetti-canvas"></canvas>
+    <audio id="birthday-audio" src="https://assets.mixkit.co/sfx/preview/mixkit-happy-birthday-balloons-889.mp3" preload="auto"></audio>
+    <audio id="blow-audio" src="https://assets.mixkit.co/sfx/preview/mixkit-single-whoosh-fire-1106.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

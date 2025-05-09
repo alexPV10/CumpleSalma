@@ -1,0 +1,503 @@
+:root {
+    --pink-light: #ff9a9e;
+    --pink-medium: #f5b5c8;
+    --pink-dark: #ee729b;
+    --strawberry: #ff4e50;
+    --strawberry-leaf: #a3de83;
+    --purple-light: #a18cd1;
+    --purple-dark: #6a5acd;
+    --balloon1: #ff7676;
+    --balloon2: #76b5ff;
+    --balloon3: #76ff8c;
+    --balloon4: #ff76f3;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: fixed;
+    touch-action: manipulation;
+}
+
+.container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 340px;
+    height: 80vh;
+    max-height: 620px;
+    z-index: 10;
+    padding: 15px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 105%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.front {
+    background: linear-gradient(45deg, var(--pink-light) 0%, var(--pink-medium) 100%);
+    color: white;
+}
+
+.back {
+    background: linear-gradient(45deg, var(--purple-light) 0%, var(--purple-dark) 100%);
+    transform: rotateY(180deg);
+    color: white;
+}
+
+h1, h2 {
+    font-family: 'Pacifico', cursive;
+    margin: 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+.age {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 5px 0;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+
+button {
+    background-color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: var(--purple-dark);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    width: 80%;
+    max-width: 200px;
+}
+
+button:hover, button:active {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor del pastel */
+.cake-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* Estilos para el pastel */
+.cake {
+    position: relative;
+    width: 180px;
+    height: 150px;
+    margin: 0 auto;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.plate {
+    width: 150px;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.layer {
+    position: absolute;
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.layer-bottom {
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(to bottom, #f8d7da, var(--pink-medium));
+    bottom: 10px;
+    left: 20px;
+}
+
+.layer-middle {
+    width: 120px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--pink-medium), var(--pink-dark));
+    bottom: 60px;
+    left: 30px;
+}
+
+.layer-top {
+    width: 100px;
+    height: 35px;
+    background: linear-gradient(to bottom, var(--pink-dark), #e84393);
+    bottom: 100px;
+    left: 40px;
+}
+
+/* Vela y llama - POSICIÓN CORREGIDA */
+.candle {
+    position: absolute;
+    width: 8px;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffd166, #f9c74f);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 135px; /* Posición desde abajo del pastel */
+    z-index: 10;
+    border-radius: 4px;
+}
+
+.flame {
+    position: absolute;
+    width: 12px;
+    height: 25px;
+    background: linear-gradient(to bottom, #fff, #ffef9f);
+    border-radius: 50% 50% 20% 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%; /* Posición relativa a la vela (arriba de ella) */
+    z-index: 11;
+    animation: flicker 1s infinite alternate;
+    filter: blur(1px);
+    transition: all 0.3s;
+}
+
+.flame.blown {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.2);
+}
+
+@keyframes flicker {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scale(0.9, 1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Fresas en el pastel */
+.strawberries {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.strawberry-cake {
+    position: absolute;
+    font-size: 1.5rem;
+    z-index: 4;
+}
+
+.strawberry-cake.s1 {
+    top: 30%;
+    left: 20%;
+}
+
+.strawberry-cake.s2 {
+    top: 60%;
+    right: 20%;
+}
+
+/* Fresas decorativas */
+.strawberry-decorations {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    top: 10px;
+    z-index: 0;
+}
+
+.strawberry {
+    position: absolute;
+    font-size: 1.8rem;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.s1 {
+    left: 15%;
+    top: 5px;
+    animation-delay: 0s;
+}
+
+.s2 {
+    right: 15%;
+    top: 15px;
+    animation-delay: 0.5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+/* Instrucciones */
+.instructions {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 5px;
+    opacity: 0.9;
+    animation: pulse 2s infinite;
+    z-index: 2;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Globos flotantes */
+.floating-balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: float-balloon 15s linear infinite;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.balloon:after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background: rgba(255,255,255,0.5);
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes float-balloon {
+    0% {
+        transform: translate(0, 100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(0, -100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Polaroid */
+.polaroid {
+    width: 140px;
+    background: white;
+    padding: 12px 12px 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transform: rotate(-5deg);
+    transition: all 0.3s;
+    margin: 10px 0;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.photo {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.caption {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* Confeti */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Humo */
+.smoke {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgba(200, 200, 200, 0.7);
+    border-radius: 50%;
+    filter: blur(4px);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 165px;
+    z-index: 12;
+    animation: smoke-rise 2s ease-out forwards;
+}
+
+@keyframes smoke-rise {
+    0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -80px) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Ajustes específicos para Samsung A35 */
+@media screen and (max-height: 700px) {
+    .container {
+        height: 85vh;
+        max-height: 580px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .age {
+        font-size: 2.2rem;
+    }
+    
+    .cake {
+        width: 160px;
+        height: 130px;
+    }
+    
+    .plate {
+        width: 140px;
+        left: 10px;
+    }
+    
+    .layer-bottom {
+        width: 130px;
+        left: 15px;
+    }
+    
+    .layer-middle {
+        width: 110px;
+        left: 25px;
+    }
+    
+    .layer-top {
+        width: 90px;
+        left: 35px;
+    }
+    
+    .candle {
+        bottom: 125px;
+    }
+    
+    .flame {
+        bottom: 100%;
+    }
+}
