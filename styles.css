@@ -40,6 +40,7 @@ body {
     max-height: 620px;
     z-index: 10;
     padding: 15px;
+    margin-bottom: 3%;
 }
 
 .card {
